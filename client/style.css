@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+h1 {
+  color: #1db954;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #181818;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+li:hover {
+  background: #282828;
+}
+
+.player {
+  margin-top: 30px;
+  background: #181818;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+audio {
+  width: 100%;
+  outline: none;
+}
