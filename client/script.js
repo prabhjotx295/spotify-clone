@@ -1,25 +1,31 @@
-const API_URL = "http://localhost:4000";
+const BASE_URL = window.location.origin;
+const songList = document.getElementById("songList");
+const player = document.getElementById("player");
 
-async function loadTracks() {
-  const response = await fetch(`${API_URL}/api/tracks`);
-  const tracks = await response.json();
+async function loadSongs() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/songs`);
+    const songs = await res.json();
 
-  const playlist = document.getElementById("playlist");
-  const audioPlayer = document.getElementById("audioPlayer");
-  const nowPlaying = document.getElementById("now-playing");
+    if (songs.length === 0) {
+      songList.innerHTML = "<p>No songs found 🎵</p>";
+      return;
+    }
 
-  tracks.forEach(track => {
-    const li = document.createElement("li");
-    li.textContent = `${track.title} — ${track.artist}`;
-
-    li.addEventListener("click", () => {
-      audioPlayer.src = `${API_URL}${track.file}`;
-      audioPlayer.play();
-      nowPlaying.textContent = `Now Playing: ${track.title} — ${track.artist}`;
+    songs.forEach(song => {
+      const div = document.createElement("div");
+      div.className = "song";
+      div.textContent = `${song.title} — ${song.artist}`;
+      div.onclick = () => {
+        player.src = `${BASE_URL}${song.url}`;
+        player.play();
+      };
+      songList.appendChild(div);
     });
-
-    playlist.appendChild(li);
-  });
+  } catch (err) {
+    songList.innerHTML = "<p>Error loading songs 😢</p>";
+    console.error(err);
+  }
 }
 
-loadTracks();
+loadSongs();

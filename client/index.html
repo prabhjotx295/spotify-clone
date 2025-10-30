@@ -4,17 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spotify Clone</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1db954, #191414);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .song {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 10px;
+      width: 300px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .song:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    audio {
+      margin-top: 20px;
+      width: 80%;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎧 My Spotify Clone</h1>
-    <ul id="playlist"></ul>
-    <div class="player">
-      <p id="now-playing">No song playing</p>
-      <audio id="audioPlayer" controls></audio>
-    </div>
-  </div>
+  <h1>🎧 Spotify Clone</h1>
+  <div class="song-list" id="songList"></div>
+  <audio id="player" controls></audio>
+
   <script src="script.js"></script>
 </body>
 </html>
